@@ -1,4 +1,5 @@
 import 'package:e_commerce_flutter/views/home/sections/category_section.dart';
+import 'package:e_commerce_flutter/views/home/sections/products_section.dart';
 import 'package:e_commerce_flutter/views/home/sections/slider_section.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         leading: IconButton(
             onPressed: (){},
             icon: Icon(Icons.menu),
@@ -26,16 +28,21 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          //category
-          CategorySection(),
-          SizedBox(height: 10,),
-
-          //slider
-          SliderSection(),
-
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            //category
+            CategorySection(),
+            SizedBox(height: 10,),
+        
+            //slider
+            SliderSection(),
+        
+            //products
+            ProductsSection(),
+        
+          ],
+        ),
       ),
     );
   }
