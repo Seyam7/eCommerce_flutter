@@ -1,4 +1,5 @@
 import 'package:e_commerce_flutter/views/home/sections/category_section.dart';
+import 'package:e_commerce_flutter/views/home/sections/slider_section.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -29,8 +30,10 @@ class HomeScreen extends StatelessWidget {
         children: [
           //category
           CategorySection(),
+          SizedBox(height: 10,),
 
           //slider
+          SliderSection(),
 
         ],
       ),

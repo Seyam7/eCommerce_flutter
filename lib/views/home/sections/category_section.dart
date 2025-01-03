@@ -69,7 +69,7 @@ class CategorySection extends StatelessWidget {
             height: 5,
           ),
           SizedBox(
-            height: 150,
+            height: 80,
             child: ListView.separated(
               itemBuilder: (_, index) {
                 return Column(
