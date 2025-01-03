@@ -5,6 +5,44 @@ class CategorySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Map> categories = [
+      {
+        'name' : 'Fashion',
+        'icon' : Icons.man,
+      },
+      {
+        'name' : 'Electronics',
+        'icon' : Icons.computer,
+      },
+      {
+        'name' : 'Applications',
+        'icon' : Icons.app_blocking,
+      },
+      {
+        'name' : 'Fashion',
+        'icon' : Icons.man,
+      },
+      {
+        'name' : 'Electronics',
+        'icon' : Icons.computer,
+      },
+      {
+        'name' : 'Applications',
+        'icon' : Icons.app_blocking,
+      },
+      {
+        'name' : 'Fashion',
+        'icon' : Icons.man,
+      },
+      {
+        'name' : 'Electronics',
+        'icon' : Icons.computer,
+      },
+      {
+        'name' : 'Applications',
+        'icon' : Icons.app_blocking,
+      },
+    ];
     return Padding(
       padding: const EdgeInsets.all(15.0),
       child: Column(
@@ -33,7 +71,7 @@ class CategorySection extends StatelessWidget {
           SizedBox(
             height: 150,
             child: ListView.separated(
-              itemBuilder: (_,index){
+              itemBuilder: (_, index) {
                 return Column(
                   children: [
                     Container(
@@ -43,14 +81,26 @@ class CategorySection extends StatelessWidget {
                         color: Colors.teal.withOpacity(.2),
                         shape: BoxShape.circle,
                       ),
+                      child: Icon(
+                        categories[index]['icon'],
+                        color: Colors.green,
+                        size: 30,
+                      ),
+                    ),
+                    SizedBox(height: 5,),
+                    Text(
+                      categories[index]['name'],
+                      style: TextStyle(fontSize: 10,),
                     ),
                   ],
                 );
               },
-              itemCount: 7,
+              itemCount: categories.length,
               scrollDirection: Axis.horizontal,
-              separatorBuilder: (_,index){
-                return SizedBox(width: 10,);
+              separatorBuilder: (_, index) {
+                return SizedBox(
+                  width: 10,
+                );
               },
             ),
           ),

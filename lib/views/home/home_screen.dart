@@ -29,6 +29,9 @@ class HomeScreen extends StatelessWidget {
         children: [
           //category
           CategorySection(),
+
+          //slider
+
         ],
       ),
     );
