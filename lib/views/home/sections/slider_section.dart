@@ -55,12 +55,12 @@ class _SliderSectionState extends State<SliderSection> {
           ),
         ),
         SizedBox(height: 5,),
-        SmoothPageIndicator(
-          controller: PageController(initialPage: activeIndex),
+        AnimatedSmoothIndicator(
+          activeIndex: activeIndex,
           count: sliders.length,
           effect: WormEffect(),
         ),
-      ],
+      ]
     );
   }
 }

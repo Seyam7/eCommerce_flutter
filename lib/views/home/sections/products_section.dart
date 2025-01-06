@@ -1,4 +1,6 @@
+import 'package:e_commerce_flutter/views/product_details/product_details.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductsSection extends StatelessWidget {
   const ProductsSection({super.key});
@@ -39,48 +41,53 @@ class ProductsSection extends StatelessWidget {
               childAspectRatio: 0.9,
             ),
             itemBuilder: (context, index) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 150,
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(3),
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          'https://4kwallpapers.com/images/wallpapers/igris-solo-leveling-2048x2048-14646.jpg',
+              return InkWell(
+                onTap: (){
+                  Get.to(()=>ProductDetails());
+                },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(3),
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            'https://www.jerseybdclub.com/wp-content/uploads/2023/08/Custom-t-shirt-design-and-printing-service-in-BD.jpg',
+                          ),
+                          fit: BoxFit.cover,
                         ),
-                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                  SizedBox(height: 5,),
-                  Text(
-                    'Igris is a very good character',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        '\$35',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
+                    SizedBox(height: 5,),
+                    Text(
+                      't-Shirt, this tshirt is great to ware in summer',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          '\$35',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 10,),
-                      Text(
-                        '\$40',
-                        style: TextStyle(
-                          color: Colors.black.withOpacity(.5),
-                          decoration: TextDecoration.lineThrough,
+                        SizedBox(width: 10,),
+                        Text(
+                          '\$40',
+                          style: TextStyle(
+                            color: Colors.black.withOpacity(.5),
+                            decoration: TextDecoration.lineThrough,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               );
             },
           ),
