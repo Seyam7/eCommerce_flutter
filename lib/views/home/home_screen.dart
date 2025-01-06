@@ -1,7 +1,9 @@
+import 'package:e_commerce_flutter/views/cart/cart.dart';
 import 'package:e_commerce_flutter/views/home/sections/category_section.dart';
 import 'package:e_commerce_flutter/views/home/sections/products_section.dart';
 import 'package:e_commerce_flutter/views/home/sections/slider_section.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,9 +24,10 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.notifications),
           ),
           IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.shopping_bag_rounded
-            ),
+            onPressed: (){
+              Get.to(()=> CartScreen());
+            },
+            icon: Icon(Icons.shopping_cart),
           ),
         ],
       ),
