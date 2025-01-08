@@ -55,7 +55,7 @@ class ProductsSection extends StatelessWidget {
                         borderRadius: BorderRadius.circular(3),
                         image: DecorationImage(
                           image: NetworkImage(
-                            'https://www.jerseybdclub.com/wp-content/uploads/2023/08/Custom-t-shirt-design-and-printing-service-in-BD.jpg',
+                            'https://acquires.in/cdn/shop/files/smooth-white-cotton-t-shirt-with-beautiful-3d-design-879335.jpg?v=1723878953',
                           ),
                           fit: BoxFit.cover,
                         ),
