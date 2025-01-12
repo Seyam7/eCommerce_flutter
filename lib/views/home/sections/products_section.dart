@@ -85,20 +85,22 @@ class ProductsSection extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                '${product['discount_price'] ?? product['original_price']}',
+                                '৳${product['discount_price'] ?? product['original_price']}',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
                               SizedBox(width: 10,),
-                              Text(
-                                '\$40',
-                                style: TextStyle(
-                                  color: Colors.black.withOpacity(.5),
-                                  decoration: TextDecoration.lineThrough,
+                              if(product['discount_price']!=null)...[  //spread operator
+                                Text(
+                                  '৳${product['original_price']}',
+                                  style: TextStyle(
+                                    color: Colors.black.withOpacity(.5),
+                                    decoration: TextDecoration.lineThrough,
+                                  ),
                                 ),
-                              ),
+                              ],
                             ],
                           ),
                         ],
