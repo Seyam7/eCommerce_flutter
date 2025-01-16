@@ -70,7 +70,7 @@ class ProductsSection extends StatelessWidget {
                               borderRadius: BorderRadius.circular(3),
                               image: DecorationImage(
                                 image: NetworkImage(
-                                  product['image'],
+                                  product['thumbnail'],
                                 ),
                                 fit: BoxFit.cover,
                               ),
