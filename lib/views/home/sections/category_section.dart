@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_flutter/views/product_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategorySection extends StatelessWidget {
   const CategorySection({super.key});
@@ -85,24 +87,31 @@ class CategorySection extends StatelessWidget {
                   child: ListView.separated(
                     itemBuilder: (_, index) {
                       final category = snapshot.data!.docs[index];
-                      return Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            height: 60,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              color: Colors.teal.withOpacity(.2),
-                              shape: BoxShape.circle,
+                      return InkWell(
+                        onTap: (){
+                          Get.to(
+                                  ()=>ProductListView(category: category.data(),),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(10),
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: Colors.teal.withOpacity(.2),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Image.network(category['icon']),
                             ),
-                            child: Image.network(category['icon']),
-                          ),
-                          SizedBox(height: 5,),
-                          Text(
-                            category['name'],
-                            style: TextStyle(fontSize: 10,),
-                          ),
-                        ],
+                            SizedBox(height: 5,),
+                            Text(
+                              category['name'],
+                              style: TextStyle(fontSize: 10,),
+                            ),
+                          ],
+                        ),
                       );
                     },
                     itemCount: snapshot.data!.docs.length,
