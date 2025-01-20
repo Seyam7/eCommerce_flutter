@@ -60,20 +60,20 @@ class _SliderSectionState extends State<SliderSection> {
                   enlargeFactor: 0.3,
                   scrollDirection: Axis.horizontal,
                   onPageChanged: (index, reason) {
-                    setState(() {
-                      activeIndex = index;
-                    });
+                    // setState(() {
+                    //   activeIndex = index;
+                    // });
                   },
                 ),
               );
             },
         ),
         SizedBox(height: 5,),
-        AnimatedSmoothIndicator(
-          activeIndex: activeIndex,
-          count: 5,
-          effect: WormEffect(),
-        ),
+        // AnimatedSmoothIndicator(
+        //   activeIndex: activeIndex,
+        //   count: 5,
+        //   effect: WormEffect(),
+        // ),
       ]
     );
   }

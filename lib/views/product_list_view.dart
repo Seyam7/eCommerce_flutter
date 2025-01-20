@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_flutter/views/product_details/product_details.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductListView extends StatelessWidget {
   final Map<String,dynamic> category;
@@ -42,6 +44,13 @@ class ProductListView extends StatelessWidget {
               final product = snapshot.data!.docs[index];
 
               return InkWell(
+                onTap: (){
+                  Get.to(()=>ProductDetails(
+                    product: product.data(),
+                    productID: product.id,
+                  ),
+                  );
+                },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

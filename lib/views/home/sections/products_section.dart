@@ -58,7 +58,11 @@ class ProductsSection extends StatelessWidget {
 
                     return InkWell(
                       onTap: (){
-                        Get.to(()=>ProductDetails(product: product.data(),));
+                        Get.to(()=>ProductDetails(
+                          product: product.data(),
+                          productID: product.id,
+                        ),
+                        );
                       },
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

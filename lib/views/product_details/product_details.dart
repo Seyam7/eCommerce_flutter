@@ -1,17 +1,24 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:get/get.dart';
 
 class ProductDetails extends StatelessWidget {
   final Map<String, dynamic> product;
+  final String productID;
   const ProductDetails({
     super.key,
     required this.product,
+    required this.productID,
   });
 
   @override
   Widget build(BuildContext context) {
+    final fireStore = FirebaseFirestore.instance;
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: Text('Product Details'),
@@ -79,8 +86,17 @@ class ProductDetails extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: (){
-
+                onPressed: ()async {
+                  await fireStore.collection('carts').add({
+                    'product_id' : productID,
+                    'title' : product['title'],
+                    'price' : product['discount_price']??product['original_price'],
+                    'image' : product['thumbnail'],
+                    'quantity' : 1,
+                    'user' : user!.email,
+                    'user_uid' : user.uid,
+                  });
+                  Get.snackbar('Success', 'Product added successfully');
                 },
                 child: Text('Add to cart'),
             ),
