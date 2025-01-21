@@ -87,16 +87,21 @@ class ProductDetails extends StatelessWidget {
           children: [
             ElevatedButton(
                 onPressed: ()async {
-                  await fireStore.collection('carts').add({
-                    'product_id' : productID,
-                    'title' : product['title'],
-                    'price' : product['discount_price']??product['original_price'],
-                    'image' : product['thumbnail'],
-                    'quantity' : 1,
-                    'user' : user!.email,
-                    'user_uid' : user.uid,
-                  });
-                  Get.snackbar('Success', 'Product added successfully');
+                  final cartProduct = await fireStore.collection('carts').where('product_id', isEqualTo: productID).where('user',isEqualTo: user!.email).get();//store data in a variable cartProduct from cart with product id and user email
+                  if(cartProduct.docs.isEmpty){//checking that user has added this product before or not
+                    await fireStore.collection('carts').add({
+                      'product_id' : productID,
+                      'title' : product['title'],
+                      'price' : product['discount_price']??product['original_price'],
+                      'image' : product['thumbnail'],
+                      'quantity' : 1,
+                      'user' : user!.email,
+                      'user_uid' : user.uid,
+                    });
+                    Get.snackbar('Success', 'Product added successfully');
+                  }else{
+                    fireStore.collection('carts').doc(cartProduct.docs.first.id).update({'quantity': FieldValue.increment(1),});//if same user add the same product to their cart then quantity will increase
+                  }
                 },
                 child: Text('Add to cart'),
             ),
