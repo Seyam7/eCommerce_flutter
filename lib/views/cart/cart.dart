@@ -78,18 +78,25 @@ class CartScreen extends StatelessWidget {
                             Text('৳ ${product['price']}'),
                             Row(
                               children: [
-                                Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.white,
-                                      size: 15,
+                                InkWell(
+                                  onTap: ()async{
+                                    await fireStore.collection('carts').doc(product.id).update({
+                                      'quantity' : FieldValue.increment(-1),
+                                    });
+                                  },
+                                  child: Container(
+                                    height: 20,
+                                    width: 20,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.remove,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -102,18 +109,25 @@ class CartScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: 10,),
-                                Container(
-                                  height: 20,
-                                  width: 20,
-                                  decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 15,
+                                InkWell(
+                                  onTap: (){
+                                    fireStore.collection('carts').doc(product.id).update({
+                                      'quantity' : FieldValue.increment(1),
+                                    });
+                                  },
+                                  child: Container(
+                                    height: 20,
+                                    width: 20,
+                                    decoration: BoxDecoration(
+                                      color: Colors.black,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
                                     ),
                                   ),
                                 ),
