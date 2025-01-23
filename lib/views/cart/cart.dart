@@ -80,9 +80,14 @@ class CartScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: ()async{
-                                    await fireStore.collection('carts').doc(product.id).update({
-                                      'quantity' : FieldValue.increment(-1),
-                                    });
+                                    if(product['quantity']==1){
+                                      print('delete');
+                                      await fireStore.collection('carts').doc(product.id).delete();
+                                    }else{
+                                      await fireStore.collection('carts').doc(product.id).update({
+                                        'quantity' : FieldValue.increment(-1),
+                                      });
+                                    }
                                   },
                                   child: Container(
                                     height: 20,
