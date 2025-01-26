@@ -21,6 +21,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   int? selected;
 
+  continueToOrder(){
+    if(selected == 0){
+      print('bkash');
+    }else{
+      print('cod');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +83,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
             ElevatedButton(
                 onPressed: (){
-                  
+                  selected == null? null : continueToOrder();
                 },
                 child: Text("Continue"),
             ),
