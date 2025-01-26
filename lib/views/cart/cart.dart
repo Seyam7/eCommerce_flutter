@@ -30,7 +30,6 @@ class CartScreen extends StatelessWidget {
                 child: Text('No products added'),
               );
             }
-            print('Total amount:');
             var totalAmount = snapshot.data!.docs.fold(0.0, (sum, doc){
               final product = doc.data();
               final price = double.parse(product['price'].toString());//convert price into double from string
