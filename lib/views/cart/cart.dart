@@ -180,7 +180,7 @@ class CartScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: (){
-                            Get.to(()=>CheckoutPage());
+                            Get.to(()=>CheckoutPage(totalAmount: totalAmount));
                           },
                           child: Text('Checkout'),
                         ),
